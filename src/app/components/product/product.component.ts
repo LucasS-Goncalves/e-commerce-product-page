@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Product } from '../../models/product.model'
+import { ProductService } from 'src/app/services/product.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-product',
@@ -8,10 +11,27 @@ import { Component, OnInit } from '@angular/core';
 export class ProductComponent implements OnInit{
 
   indexOfActiveSlide = 0;
+  product: Product = {
+    img1: '',
+    img2: '',
+    img3: '',
+    img4: '',
+    companyName: '',
+    productName: '',
+    description: '',
+    newPrice: 0,
+    discount: 0,
+    oldPrice: 0
+  }
 
-  constructor(){}
+
+
+  amount = 1;
+
+  constructor(private productService: ProductService, private cartService: CartService){}
 
   ngOnInit(): void {
+    this.product = this.productService.product;
   }
 
   previousImg(){
@@ -44,5 +64,9 @@ export class ProductComponent implements OnInit{
 
     activeSlide?.classList.remove('active');
     slides[this.indexOfActiveSlide].classList.add('active');
+  }
+
+  onAddItem(img1: string, productName: string, newPrice: number, amount: number){
+    this.cartService.emitedProduct.emit({img1, productName, newPrice, amount});
   }
 }

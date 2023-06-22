@@ -52,6 +52,9 @@ header{
 
 .nav.open .button img:last-child{
   display: block;
+  position: fixed;
+  top: 1.8rem;
+  left: 1.5rem;
 }
 
 .logo{
@@ -104,6 +107,19 @@ header{
   cursor: pointer;
   border: none;
   background-color: transparent;
+  position: relative;
+}
+
+.amountOfProducts{
+  position: absolute;
+  top: -5px;
+  right: -8px;
+  background: #FF7E1B;
+  padding: .01rem .4rem;
+  border-radius: 7px;
+  color: #FFFFFF;
+  font-size: 0.625rem;
+  font-weight: 700;
 }
 
 .cart:hover path{
@@ -124,14 +140,12 @@ header{
 .overlay{
   visibility: hidden;
   z-index: 1;
-  position: absolute;
+  position: fixed;
   top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
   background-color: hsl(0, 0%, 0%, .75);
   opacity: 0;
   width: 100%;
+  height: 100%;
   transition: .3s;
 }
 
@@ -154,7 +168,8 @@ header{
   background-color: white;
   border-radius: 10px;
   width: 360px;
-  height: 256px;
+  height: auto;
+  min-height: 256px;
   z-index: 2;
   transition: .2s;
 }
@@ -171,24 +186,27 @@ header{
   padding: 1.5rem;
 }
 
+.border_bottom{
+  width: 360px;
+  height: 1px;
+  background-color: #E4E9F2;
+}
+
+.emptyCart{
+  padding-top: 4.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #69707D;
+}
+
+
 .info_cart_div{
   width: 312px;
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 0;
   gap: 1rem;
-}
-
-.info_cart_div::after{
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -24px;
-  width: 360px;
-  height: 1px;
-  background-color: #E4E9F2;
 }
 
 .productImg_cart{
