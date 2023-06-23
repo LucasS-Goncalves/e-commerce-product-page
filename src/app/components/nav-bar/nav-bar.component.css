@@ -248,6 +248,7 @@ header{
   color: #FFFFFF;
   background-color: #FF7E1B;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 @media(min-width: 1440px){

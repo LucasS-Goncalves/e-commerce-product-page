@@ -11,7 +11,6 @@ export class NavBarComponent implements OnInit{
 
   openedMenu = false;
   cartOpened = false;
-  itemExistsInCartItems = false;
 
   cartItems: Cart[] = [];
 
@@ -20,18 +19,14 @@ export class NavBarComponent implements OnInit{
   ngOnInit(): void {
     this.cartService.emitedProduct.subscribe(
       item => {
-        this.cartItems.forEach(product => {
-          if(product.productName === item.productName && product.img1 === item.img1){
-            product.amount = item.amount;
-            this.itemExistsInCartItems = true;
-          }
-        });
-
-        if(!this.itemExistsInCartItems){
+        let index = this.cartItems.findIndex(product => product.productId === item.productId);
+        if(index === -1) {
           this.cartItems.push(item);
-        };
+        } else {
+          this.cartItems[index].amount = item.amount;
+        }
       }
-    )
+    );
   }
 
   openMenu(){
@@ -39,7 +34,6 @@ export class NavBarComponent implements OnInit{
   }
 
   deleteItem(ItemIndex: number){
-    this.cartItems.splice(ItemIndex, 1)
+    this.cartItems.splice(ItemIndex, 1);
   }
-
 }

@@ -3,5 +3,6 @@ export interface Cart{
   productName: string,
   newPrice: number,
   amount: number,
-  totalPrice?: number
+  productId: number,
+  totalPrice?: number,
 }

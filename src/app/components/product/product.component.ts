@@ -21,7 +21,8 @@ export class ProductComponent implements OnInit{
     description: '',
     newPrice: 0,
     discount: 0,
-    oldPrice: 0
+    oldPrice: 0,
+    productId:0,
   }
 
 
@@ -66,8 +67,8 @@ export class ProductComponent implements OnInit{
     slides[this.indexOfActiveSlide].classList.add('active');
   }
 
-  onAddItem(img1: string, productName: string, newPrice: number, amount: number){
-    this.cartService.emitedProduct.emit({img1, productName, newPrice, amount});
+  onAddItem(img1: string, productName: string, newPrice: number, amount: number, productId: number){
+    this.cartService.emitedProduct.next({img1, productName, newPrice, amount, productId});
   }
 
 }

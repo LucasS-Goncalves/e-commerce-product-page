@@ -8,5 +8,6 @@ export interface Product{
   description: string,
   newPrice: number,
   discount: number,
-  oldPrice: number
+  oldPrice: number,
+  productId: number
 }
