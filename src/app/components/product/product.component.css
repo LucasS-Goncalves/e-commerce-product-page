@@ -142,7 +142,7 @@ button{
   font-size: 1rem;
 }
 
-.quantity_div{
+.amount_div{
   background-color: #F6F8FD;
   display: flex;
   align-items: center;
@@ -152,7 +152,7 @@ button{
   border-radius: 10px;
 }
 
-.quantity_div button{
+.amount_div button{
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -162,11 +162,11 @@ button{
   padding: 1rem 1.5rem;
 }
 
-.quantity_div button path{
+.amount_div button path{
   transition: .2s;
 }
 
-.quantity_div span{
+.amount_div span{
   font-size: 1rem;
   font-weight: 700;
 }
@@ -232,7 +232,7 @@ button{
     align-items: center;
   }
 
-  .quantity_div button:hover path{
+  .amount_div button:hover path{
     fill: #FFAB6A;
   }
 

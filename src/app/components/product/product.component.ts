@@ -69,4 +69,5 @@ export class ProductComponent implements OnInit{
   onAddItem(img1: string, productName: string, newPrice: number, amount: number){
     this.cartService.emitedProduct.emit({img1, productName, newPrice, amount});
   }
+
 }
