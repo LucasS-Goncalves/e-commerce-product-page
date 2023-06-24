@@ -12,10 +12,7 @@ export class ProductComponent implements OnInit{
 
   indexOfActiveSlide = 0;
   product: Product = {
-    img1: '',
-    img2: '',
-    img3: '',
-    img4: '',
+    images: ['img1' ,'img2' ,'img3' ,'img4' ],
     companyName: '',
     productName: '',
     description: '',
@@ -24,8 +21,6 @@ export class ProductComponent implements OnInit{
     oldPrice: 0,
     productId:0,
   }
-
-
 
   amount = 1;
 
@@ -69,6 +64,19 @@ export class ProductComponent implements OnInit{
 
   onAddItem(img1: string, productName: string, newPrice: number, amount: number, productId: number){
     this.cartService.emitedProduct.next({img1, productName, newPrice, amount, productId});
+  }
+
+  changeMainImg(index: number){
+    const mainImg = document.querySelector('.mainImage')?.firstChild as HTMLImageElement;
+    mainImg.src = this.product.images[index];
+
+    const slidesList = document.querySelector('.slides') as HTMLUListElement;
+    const slides = Array.from(slidesList!.children);
+    const activeSlide = slidesList?.querySelector('.active');
+    let indexOfActiveSlide = slides.indexOf(activeSlide!);
+    slides[indexOfActiveSlide].classList.remove('active');
+    slides[index].classList.add('active');
+
   }
 
 }

@@ -1,8 +1,10 @@
 export interface Product{
-  img1: string,
-  img2: string,
-  img3: string,
-  img4: string,
+  images: [
+    img1: string,
+    img2: string,
+    img3: string,
+    img4: string,
+  ],
   companyName: string,
   productName: string,
   description: string,

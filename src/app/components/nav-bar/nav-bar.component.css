@@ -311,6 +311,10 @@ header{
     opacity: 1;
   }
 
+  .cart_dropdown{
+    box-shadow: 0 20px 20px 1px hsl(0, 0%, 0%, 10%);
+  }
+
   .cart_avatar_div{
     gap: 2.5rem;
   }

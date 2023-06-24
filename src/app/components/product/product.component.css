@@ -27,6 +27,10 @@ button{
   height: auto;
 }
 
+.mainImage{
+  display: none;
+}
+
 .slides{
   height: 100%;
   position: relative;
@@ -35,7 +39,6 @@ button{
 .slide{
   width: 100%;
   height: 100%;
-  transition: .4s;
   display: none;
 }
 
@@ -203,36 +206,63 @@ button{
     justify-content: center;
     display: flex;
     gap: 6rem;
-    padding-top: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
 
   }
 
   .slideshow_container{
-    position: relative;
+    position: static;
+    width: 445px;
+    height: 565px;
+  }
+
+  .mainImage{
+    display: block;
     width: 445px;
     height: 445px;
   }
 
-  .slides{
+  .mainImage img{
+    width: 100%;
     height: 100%;
-    position: relative;
+    border-radius: 15px;
+  }
+
+  .slides{
+    width: auto;
+    height: auto;
+    display: flex;
+    margin-top: 2rem;
+    gap: 2rem;
   }
 
   .slide{
-    width: 100%;
-    height: 100%;
-    transition: .4s;
-    display: none;
+    width: 88px;
+    height: 88px;
+    display: block;
+    cursor: pointer;
   }
 
   .slide.active{
+    border: 3px solid #FF7E1B ;
+    border-radius: 17px;
+  }
+
+  .slide.active img{
     display: block;
+    opacity: .3;
   }
 
   .slide img{
     width: 100%;
     height: 100%;
     border-radius: 15px;
+    transition: .2s;
+  }
+
+  .slide:hover img{
+    opacity: .5;
   }
 
   .previous_button, .next_button{
@@ -248,9 +278,9 @@ button{
   }
 
   .product_container{
-    padding: 1.5rem;
-    padding-bottom: 3rem;
-    gap: 1rem;
+    padding: 0 1.5rem 0 1.5rem;
+
+    gap: 2rem;
   }
 
   .companyName{
