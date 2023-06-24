@@ -251,7 +251,7 @@ header{
   cursor: pointer;
 }
 
-@media(min-width: 1440px){
+@media(min-width: 1230px){
 
   .nav{
     padding: 2rem 0;
