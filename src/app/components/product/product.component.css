@@ -328,26 +328,63 @@ button{
     background-color: #FFAB6A;
   }
 
+
   #modal{
+    position: relative;
     background-color: transparent;
     border: none;
-    width: 550px;
-    height: auto;
+    width: auto;
+    height: 100vh;
     top: 0;
-
     left: 50%;
     overflow: hidden;
     translate: -50%;
+    margin-top: 5rem;
   }
 
   #modal .mainImage{
+    margin: 0 auto;
     width: 550px;
     height: 550px;
   }
 
   #modal .slides{
     justify-content: center;
+    height: 100vh;
   }
+
+  #modal .previous_button, .next_button{
+    top: 35%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 100%;
+    translate: (50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #modal button path{
+    transition: .2s;
+  }
+
+
+  #modal .previous_button:hover path, .next_button:hover path{
+    stroke: #FF7E1B;
+  }
+
+  #modal .previous_button{
+    left: 105px;
+  }
+
+  #modal .next_button{
+    right: 105px;
+  }
+
 
 
   #modal::backdrop{
@@ -355,4 +392,5 @@ button{
   }
 
 }
+
 
