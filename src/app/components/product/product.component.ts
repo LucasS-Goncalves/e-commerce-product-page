@@ -79,4 +79,17 @@ export class ProductComponent implements OnInit{
 
   }
 
+  imgZoom(){
+    const modal = document.getElementById('modal') as HTMLDialogElement
+    console.log(modal)
+    modal.showModal();
+
+  }
+
+  closeZoom(){
+    const modal = document.getElementById('modal') as HTMLDialogElement
+    console.log(modal)
+    modal.close()
+  }
+
 }

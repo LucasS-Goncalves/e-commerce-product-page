@@ -53,5 +53,28 @@
         Add to cart
       </button>
     </div>
+    <button (click)="imgZoom()">open modal</button>
+
+    <dialog id="modal">
+      <button (click)="closeZoom()">X</button>
+      <div class="mainImage fade">
+        <img src="{{product.images[0]}}" alt="" >
+      </div>
+      <ul class="slides">
+        <li class="slide fade active">
+          <img src="{{product.images[0]}}" alt="" (click)="changeMainImg(0)">
+        </li>
+        <li class="slide fade">
+          <img src="{{product.images[1]}}" alt="" (click)="changeMainImg(1)">
+        </li>
+        <li class="slide fade">
+          <img src="{{product.images[2]}}" alt="" (click)="changeMainImg(2)">
+        </li>
+        <li class="slide fade">
+          <img src="{{product.images[3]}}" alt="" (click)="changeMainImg(3)">
+        </li>
+      </ul>
+    </dialog>
+
   </section>
 </main>
