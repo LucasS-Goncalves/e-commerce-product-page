@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';
 import { Product } from '../../models/product.model'
 import { ProductService } from 'src/app/services/product.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit{
   openedModal = false;
   innerWidth: any;
   indexOfActiveSlide = 0;
+
   product: Product = {
     images: ['img1' ,'img2' ,'img3' ,'img4' ],
     companyName: '',
@@ -25,13 +26,25 @@ export class ProductComponent implements OnInit{
   }
   amount = 1;
 
+  @ViewChild('slidesUl') slidesUl!:ElementRef<HTMLUListElement>
+  @ViewChild('mainImage') mainImage!:ElementRef<HTMLImageElement>;
 
-  constructor(private productService: ProductService, private cartService: CartService){}
+  @ViewChild('modal') modal!: ElementRef<HTMLDialogElement>;
+  @ViewChild('slidesUlInModal') slidesUlInModal!:ElementRef<HTMLUListElement>;
+  @ViewChild('modalMainImage') modalMainImage!:ElementRef<HTMLImageElement>;
+
+  constructor(
+    private productService: ProductService,
+    private cartService: CartService,
+    ) {}
 
   ngOnInit(): void {
     this.product = this.productService.product;
-
     this.innerWidth = window.innerWidth;
+  }
+
+  onAddItem(img1: string, productName: string, newPrice: number, amount: number, productId: number){
+    this.cartService.emitedProduct.next({img1, productName, newPrice, amount, productId});
   }
 
   @HostListener('window:resize', ['$event'])
@@ -42,125 +55,99 @@ export class ProductComponent implements OnInit{
   previousImg(){
 
     if(this.openedModal){
-      const modal = document.getElementById('modal');
-      const slidesList = modal?.querySelector('.slides') as HTMLUListElement;
-      const slides = Array.from(slidesList!.children);
-      const activeSlide = slidesList?.querySelector('.active');
-      this.indexOfActiveSlide = slides.indexOf(activeSlide!);
+      const slidesInSlidesUlInModal = Array.from(this.slidesUlInModal.nativeElement.children);
+      const activeSlide = this.slidesUlInModal.nativeElement.querySelector('.active');
+
+      this.indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlide!);
       this.indexOfActiveSlide--;
 
-      if(this.indexOfActiveSlide < 0) {
-        this.indexOfActiveSlide = (slides.length - 1);
-      }
+      if(this.indexOfActiveSlide < 0) this.indexOfActiveSlide = (slidesInSlidesUlInModal.length - 1);
 
-      const mainImg = modal?.querySelector('.mainImage')?.firstChild as HTMLImageElement;
-      mainImg.src = this.product.images[this.indexOfActiveSlide];
+      this.modalMainImage.nativeElement.src = this.product.images[this.indexOfActiveSlide];
       activeSlide?.classList.remove('active');
-      slides[this.indexOfActiveSlide].classList.add('active');
+      slidesInSlidesUlInModal[this.indexOfActiveSlide].classList.add('active');
 
     } else {
-      const slidesList = document.querySelector('.slides') as HTMLUListElement;
-      const slides = Array.from(slidesList!.children);
-      const activeSlide = slidesList?.querySelector('.active');
-      this.indexOfActiveSlide = slides.indexOf(activeSlide!);
+      const slidesInSlidesUl = Array.from(this.slidesUl.nativeElement.children);
+      const activeSlide = this.slidesUl.nativeElement.querySelector('.active');
 
+      this.indexOfActiveSlide = slidesInSlidesUl.indexOf(activeSlide!);
       this.indexOfActiveSlide--;
 
-      if(this.indexOfActiveSlide < 0) {
-        this.indexOfActiveSlide = (slides.length - 1);
-      }
+      if(this.indexOfActiveSlide < 0) this.indexOfActiveSlide = (slidesInSlidesUl.length - 1);
 
       activeSlide?.classList.remove('active');
-      slides[this.indexOfActiveSlide].classList.add('active');
+      slidesInSlidesUl[this.indexOfActiveSlide].classList.add('active');
     }
   }
 
   nextImg(){
+
     if(this.openedModal){
-      const modal = document.getElementById('modal');
-      const slidesList = modal?.querySelector('.slides') as HTMLUListElement;
-      const slides = Array.from(slidesList!.children);
-      const activeSlide = slidesList?.querySelector('.active');
-      this.indexOfActiveSlide = slides.indexOf(activeSlide!);
+      const slidesInSlidesUlInModal = Array.from(this.slidesUlInModal.nativeElement.children);
+      const activeSlide = this.slidesUlInModal.nativeElement.querySelector('.active');
+
+      this.indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlide!);
       this.indexOfActiveSlide++;
 
-      if(this.indexOfActiveSlide >= slides.length) {
-        this.indexOfActiveSlide = 0;
-      }
+      if(this.indexOfActiveSlide >= slidesInSlidesUlInModal.length) this.indexOfActiveSlide = 0;
 
-      const mainImg = modal?.querySelector('.mainImage')?.firstChild as HTMLImageElement;
-      mainImg.src = this.product.images[this.indexOfActiveSlide];
+      this.modalMainImage.nativeElement.src = this.product.images[this.indexOfActiveSlide];
       activeSlide?.classList.remove('active');
-      slides[this.indexOfActiveSlide].classList.add('active');
+      slidesInSlidesUlInModal[this.indexOfActiveSlide].classList.add('active');
+
     } else {
-      const slidesList = document.querySelector('.slides') as HTMLUListElement;
-      const slides = Array.from(slidesList!.children);
-      const activeSlide = slidesList?.querySelector('.active');
-      this.indexOfActiveSlide = slides.indexOf(activeSlide!);
+      const slidesInSlidesUl = Array.from(this.slidesUl.nativeElement.children);
+      const activeSlide = this.slidesUl.nativeElement.querySelector('.active');
 
+      this.indexOfActiveSlide = slidesInSlidesUl.indexOf(activeSlide!);
       this.indexOfActiveSlide++;
 
-      if(this.indexOfActiveSlide >= slides.length) {
-        this.indexOfActiveSlide = 0;
-      }
+      if(this.indexOfActiveSlide >= slidesInSlidesUl.length) this.indexOfActiveSlide = 0;
 
       activeSlide?.classList.remove('active');
-      slides[this.indexOfActiveSlide].classList.add('active');
+      slidesInSlidesUl[this.indexOfActiveSlide].classList.add('active');
     }
-  }
-
-  onAddItem(img1: string, productName: string, newPrice: number, amount: number, productId: number){
-    this.cartService.emitedProduct.next({img1, productName, newPrice, amount, productId});
   }
 
   changeMainImg(index: number){
 
     if(this.openedModal){
-      const modal = document.getElementById('modal');
-      const mainImg = modal?.querySelector('.mainImage')?.firstChild as HTMLImageElement;
-      console.log(index)
-      mainImg.src = this.product.images[index];
+      this.modalMainImage.nativeElement.src = this.product.images[index];
 
-      const slidesList = modal?.querySelector('.slides') as HTMLUListElement;
-      const slides = Array.from(slidesList!.children);
-      const activeSlide = slidesList?.querySelector('.active');
-      let indexOfActiveSlide = slides.indexOf(activeSlide!);
-      slides[indexOfActiveSlide].classList.remove('active');
-      slides[index].classList.add('active');
+      const slidesInSlidesUlInModal = Array.from(this.slidesUlInModal.nativeElement!.children);
+      const activeSlide = this.slidesUlInModal.nativeElement?.querySelector('.active');
+      let indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlide!);
+      slidesInSlidesUlInModal[indexOfActiveSlide].classList.remove('active');
+      slidesInSlidesUlInModal[index].classList.add('active');
 
     } else {
-      const mainImg = document.querySelector('.mainImage')?.firstChild as HTMLImageElement;
-      mainImg.src = this.product.images[index];
+      this.mainImage.nativeElement.src = this.product.images[index];
 
-      const slidesList = document.querySelector('.slides') as HTMLUListElement;
-      const slides = Array.from(slidesList!.children);
-      const activeSlide = slidesList?.querySelector('.active');
-      let indexOfActiveSlide = slides.indexOf(activeSlide!);
-      slides[indexOfActiveSlide].classList.remove('active');
-      slides[index].classList.add('active');
+      const slidesInSlidesUl = Array.from(this.slidesUl.nativeElement.children);
+      const activeSlide = this.slidesUl.nativeElement.querySelector('.active');
+      let indexOfActiveSlide = slidesInSlidesUl.indexOf(activeSlide!);
+      slidesInSlidesUl[indexOfActiveSlide].classList.remove('active');
+      slidesInSlidesUl[index].classList.add('active');
     }
 
   }
 
   imgZoom(event?: Event){
     this.openedModal = true;
-    const modal = document.getElementById('modal') as HTMLDialogElement
-    modal.showModal();
+    this.modal.nativeElement.showModal();
     const selectedImg = event?.target as HTMLImageElement;
-    const mainImg = modal?.querySelector('.mainImage')?.firstChild as HTMLImageElement;
-    mainImg.src = selectedImg.src;
-    const slidesList = modal?.querySelector('.slides') as HTMLUListElement;
+    this.modalMainImage.nativeElement.src = selectedImg.src;
 
-    const activeSlide = slidesList?.querySelector('.active');
-    const slides = Array.from(slidesList!.children);
+    const activeSlide = this.slidesUlInModal.nativeElement.querySelector('.active');
+    const slidesInSlidesUl = Array.from(this.slidesUl.nativeElement.children);
+    const slidesInSlidesUlInModal = Array.from(this.slidesUlInModal.nativeElement!.children);
     const slidesImages: any[] = [];
     let matchedImageIndex = 0;
 
-    slides.forEach(li => {
+    slidesInSlidesUl.forEach(li => {
       slidesImages.push(li.firstChild);
     })
-
-
 
     slidesImages.forEach((img: HTMLImageElement, index: number) => {
       if(img.src === selectedImg.src){
@@ -169,13 +156,12 @@ export class ProductComponent implements OnInit{
       }
     })
     activeSlide?.classList.remove('active');
-    slides[matchedImageIndex].classList.add('active');
+    slidesInSlidesUlInModal[matchedImageIndex].classList.add('active');
   }
 
   closeZoom(){
     this.openedModal = false;
-    const modal = document.getElementById('modal') as HTMLDialogElement
-    modal.close()
+    this.modal.nativeElement.close();
   }
 
 }

@@ -328,7 +328,7 @@ button{
   }
 
 
-  #modal{
+  .modal{
     background-color: transparent;
     border: none;
     width: auto;
@@ -340,19 +340,19 @@ button{
     margin-top: 5rem;
   }
 
-  #modal .mainImage{
+  .modal .mainImage{
     position: relative;
     margin: 0 auto;
     width: 550px;
     height: 550px;
   }
 
-  #modal .slides{
+  .modal .slides{
     justify-content: center;
     height: 100vh;
   }
 
-  #modal .previous_button, .next_button{
+  .modal .previous_button, .next_button{
     position: absolute;
     top: 270px;
     width: 56px;
@@ -366,28 +366,33 @@ button{
 
   }
 
-  #modal button path{
+  .modal button path{
     transition: .2s;
   }
 
-  #modal .previous_button:hover path, .next_button:hover path{
+  .modal .previous_button:hover path, .next_button:hover path{
     stroke: #FF7E1B;
   }
 
-  #modal .previous_button{
+  .modal .previous_button{
     left: -30px;
   }
 
-  #modal .next_button{
+  .modal .next_button{
     right: -30px;
   }
 
-
-
-  #modal::backdrop{
+  .modal::backdrop{
     background-color: hsl(0, 0%, 0%, .75);
   }
 
+  .modal .slide.active img{
+    display: block;
+
+  }
+
+  /* .modal .slide:hover img{
+  } */
 }
 
 
