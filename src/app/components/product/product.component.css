@@ -198,8 +198,6 @@ button{
   transition: .2s;
 }
 
-
-
 @media(min-width: 1230px){
 
   main{
@@ -220,6 +218,7 @@ button{
   }
 
   .mainImage{
+    cursor: pointer;
     display: block;
     width: 445px;
     height: 445px;
@@ -330,7 +329,6 @@ button{
 
 
   #modal{
-    position: relative;
     background-color: transparent;
     border: none;
     width: auto;
@@ -343,6 +341,7 @@ button{
   }
 
   #modal .mainImage{
+    position: relative;
     margin: 0 auto;
     width: 550px;
     height: 550px;
@@ -354,14 +353,13 @@ button{
   }
 
   #modal .previous_button, .next_button{
-    top: 35%;
-    transform: translateY(-50%);
+    position: absolute;
+    top: 270px;
     width: 56px;
     height: 56px;
     background-color: #FFFFFF;
     border: none;
     border-radius: 100%;
-    translate: (50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -372,17 +370,16 @@ button{
     transition: .2s;
   }
 
-
   #modal .previous_button:hover path, .next_button:hover path{
     stroke: #FF7E1B;
   }
 
   #modal .previous_button{
-    left: 105px;
+    left: -30px;
   }
 
   #modal .next_button{
-    right: 105px;
+    right: -30px;
   }
 
 
