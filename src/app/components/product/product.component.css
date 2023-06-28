@@ -198,6 +198,50 @@ button{
   transition: .2s;
 }
 
+@media(min-width: 768px){
+  .slideshow_container{
+    position: relative;
+    width: 100%;
+    height: 550px;
+  }
+
+  .slide img{
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
+    object-position: center;
+  }
+
+  .previous_button, .next_button{
+    border: 2px solid #FF7E1B;
+    transition: .2s;
+  }
+
+  .previous_button{
+    left: 50px;
+  }
+
+  .next_button{
+    right: 50px;
+  }
+
+  .previous_button:hover path, .next_button:hover path{
+    stroke: #FF7E1B;
+  }
+
+  .product_container{
+    align-items: center;
+  }
+
+  .description{
+    color: #69707D;
+    font-size: .9375rem;
+    line-height: 25px;
+    width: 500px;
+    text-align: center;
+  }
+}
+
 @media(min-width: 1230px){
 
   main{
@@ -213,15 +257,15 @@ button{
 
   .slideshow_container{
     position: static;
-    width: 445px;
+    width: 400px;
     height: 565px;
   }
 
   .mainImage{
     cursor: pointer;
     display: block;
-    width: 445px;
-    height: 445px;
+    width: 400px;
+    height: 400px;
   }
 
   .mainImage img{
@@ -234,8 +278,9 @@ button{
     width: auto;
     height: auto;
     display: flex;
+    justify-content: space-between;
     margin-top: 2rem;
-    gap: 2rem;
+
   }
 
   .slide{
@@ -251,11 +296,14 @@ button{
   }
 
   .slide.active img{
+    width: 100%;
+    height: 100%;
     display: block;
     opacity: .3;
   }
 
   .slide img{
+    object-fit: fill;
     width: 100%;
     height: 100%;
     border-radius: 15px;
@@ -281,6 +329,7 @@ button{
   .product_container{
     padding: 0 1.5rem 0 1.5rem;
     gap: 2rem;
+    align-items: normal;
     position: relative;
   }
 
@@ -298,6 +347,7 @@ button{
   .description{
     width: 445px;
     line-height: 26px;
+    text-align: start;
   }
 
   .prices_div{
@@ -337,22 +387,83 @@ button{
     left: 50%;
     overflow: hidden;
     translate: -50%;
-    margin-top: 5rem;
+    padding-top: 3.5rem;
   }
 
   .modal .mainImage{
     position: relative;
     margin: 0 auto;
-    width: 550px;
-    height: 550px;
+    width: 450px;
+    height: 450px;
+  }
+
+  .modal .close_button{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: -40px;
+    right: 0;
+    transition: .2s;
+    width: 20px;
+    height: 20px;
+  }
+
+  .modal .close_button:hover path{
+    fill: #FF7E1B;
   }
 
   .modal .slides{
+    margin: 1rem;
+    gap: 2rem;
+    width: auto;
+    height: auto;
     justify-content: center;
-    height: 100vh;
   }
 
-  .modal .previous_button, .next_button{
+  .modal .slide{
+    width: 88px;
+    height: 88px;
+    background-color: #FFFFFF;
+    border-radius: 17px;
+  }
+
+  .modal .slide img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 1;
+    position: relative;
+  }
+
+  .modal .slide img::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "opass";
+    background-color: #2b2a2a;
+    width: 5px;
+    height: 5px;
+  }
+
+  .modal .slide:hover{
+    border-radius: 16px;
+  }
+
+  .modal .slide:hover img{
+    opacity: .6;
+  }
+
+  .modal .slide.active{
+    border: 3px solid #FF7E1B ;
+    border-radius: 18px;
+
+  }
+
+  .modal .slide.active img{
+    opacity: .3;
+  }
+
+  .modal .previous_button, .modal .next_button{
     position: absolute;
     top: 270px;
     width: 56px;
@@ -363,7 +474,6 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 
   .modal button path{
@@ -385,14 +495,35 @@ button{
   .modal::backdrop{
     background-color: hsl(0, 0%, 0%, .75);
   }
+}
 
-  .modal .slide.active img{
-    display: block;
+@media(min-width: 1440px){
 
+  .slideshow_container{
+    position: static;
+    width: 445px;
+    height: 565px;
   }
 
-  /* .modal .slide:hover img{
-  } */
+  .mainImage{
+    cursor: pointer;
+    display: block;
+    width: 445px;
+    height: 445px;
+  }
+
+   .modal{
+    padding-top: 5rem;
+  }
+
+  .modal .slides{
+    margin: 2rem;
+  }
+
+  .modal .mainImage{
+    width: 550px;
+    height: 550px;
+  }
 }
 
 

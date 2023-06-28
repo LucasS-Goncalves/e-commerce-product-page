@@ -254,7 +254,7 @@ header{
 @media(min-width: 1230px){
 
   .nav{
-    padding: 2rem 0;
+    padding: 1.2rem 0;
     width: 1110px ;
     border-bottom: 1px solid #E4E9F2;
   }
@@ -328,6 +328,13 @@ header{
     visibility: hidden;
     opacity: 0;
   }
+
+  @media(min-width: 1440px){
+    .nav{
+      padding: 2rem 0;
+    }
+  }
+
 }
 
 

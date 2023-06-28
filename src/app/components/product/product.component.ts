@@ -41,6 +41,7 @@ export class ProductComponent implements OnInit{
   ngOnInit(): void {
     this.product = this.productService.product;
     this.innerWidth = window.innerWidth;
+    if(this.innerWidth < 1230){}
   }
 
   onAddItem(img1: string, productName: string, newPrice: number, amount: number, productId: number){
@@ -50,6 +51,17 @@ export class ProductComponent implements OnInit{
   @HostListener('window:resize', ['$event'])
   onResize(event: any){
     this.innerWidth = window.innerWidth;
+    if(this.innerWidth < 1230 && this.openedModal === true){
+      this.closeZoom();
+    }
+
+  }
+
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if(event.key === 'Escape'){
+      this.closeZoom();
+    }
   }
 
   previousImg(){
@@ -134,6 +146,7 @@ export class ProductComponent implements OnInit{
   }
 
   imgZoom(event?: Event){
+    console.log('s')
     this.openedModal = true;
     this.modal.nativeElement.showModal();
     const selectedImg = event?.target as HTMLImageElement;
