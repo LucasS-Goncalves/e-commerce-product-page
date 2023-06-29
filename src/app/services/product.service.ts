@@ -18,6 +18,6 @@ export class ProductService{
     newPrice: 125.00,
     discount: 50,
     oldPrice: 250.00,
-    productId: 0
+    productId: 0,
   }
 }

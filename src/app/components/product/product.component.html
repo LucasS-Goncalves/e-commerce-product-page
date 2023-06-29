@@ -55,6 +55,7 @@
     </div>
 
     <dialog class="modal" #modal>
+      <div style="display: flex;">
       <div class="mainImage">
         <img src="{{product.images[0]}}" alt="" #modalMainImage>
         <button class="previous_button" (click)="previousImg()">
@@ -81,7 +82,7 @@
           <img src="{{product.images[3]}}" alt="" (click)="changeMainImg(3)">
         </li>
       </ul>
+    </div>
     </dialog>
-
   </section>
 </main>

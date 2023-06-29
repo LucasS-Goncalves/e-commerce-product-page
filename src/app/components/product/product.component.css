@@ -246,10 +246,10 @@ button{
 
   main{
     margin: auto;
-    align-items: center;
-    justify-content: center;
     display: flex;
-    gap: 6rem;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
     padding-top: 3rem;
     padding-bottom: 4rem;
 
@@ -257,15 +257,15 @@ button{
 
   .slideshow_container{
     position: static;
-    width: 400px;
+    width: 350px;
     height: 565px;
   }
 
   .mainImage{
     cursor: pointer;
     display: block;
-    width: 400px;
-    height: 400px;
+    width: 350px;
+    height: 350px;
   }
 
   .mainImage img{
@@ -284,8 +284,8 @@ button{
   }
 
   .slide{
-    width: 88px;
-    height: 88px;
+    width: 75px;
+    height: 75px;
     display: block;
     cursor: pointer;
   }
@@ -328,23 +328,25 @@ button{
 
   .product_container{
     padding: 0 1.5rem 0 1.5rem;
-    gap: 2rem;
+    gap: 1rem;
+    padding-top: 2rem;
     align-items: normal;
     position: relative;
   }
 
   .companyName{
-    font-size: .8125rem;
+    font-size: .7rem;
     letter-spacing: 2px;
   }
 
   .productName{
     width: 445px;
-    font-size: 2.75rem;
+    font-size: 2.5rem;
     line-height: 48px;
   }
 
   .description{
+    font-size: .85rem;
     width: 445px;
     line-height: 26px;
     text-align: start;
@@ -377,7 +379,6 @@ button{
     background-color: #FFAB6A;
   }
 
-
   .modal{
     background-color: transparent;
     border: none;
@@ -393,8 +394,8 @@ button{
   .modal .mainImage{
     position: relative;
     margin: 0 auto;
-    width: 450px;
-    height: 450px;
+    width: 390px;
+    height: 390px;
   }
 
   .modal .close_button{
@@ -413,6 +414,7 @@ button{
   }
 
   .modal .slides{
+    flex-direction: column;
     margin: 1rem;
     gap: 2rem;
     width: auto;
@@ -499,6 +501,17 @@ button{
 
 @media(min-width: 1440px){
 
+  main{
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 6rem;
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+
+  }
+
   .slideshow_container{
     position: static;
     width: 445px;
@@ -512,18 +525,234 @@ button{
     height: 445px;
   }
 
-   .modal{
-    padding-top: 5rem;
+  .mainImage img{
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
   }
 
-  .modal .slides{
-    margin: 2rem;
+  .slides{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+
+  }
+
+  .slide{
+    width: 75px;
+    height: 75px;
+    display: block;
+    cursor: pointer;
+  }
+
+  .slide.active{
+    border: 3px solid #FF7E1B ;
+    border-radius: 17px;
+  }
+
+  .slide.active img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: .3;
+  }
+
+  .slide img{
+    object-fit: fill;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    transition: .2s;
+  }
+
+  .slide:hover img{
+    opacity: .5;
+  }
+
+  .previous_button, .next_button{
+    display: none;
+  }
+
+  .previous_button{
+    left: 15px;
+  }
+
+  .next_button{
+    right: 15px;
+  }
+
+  .product_container{
+    padding: 0 1.5rem 0 1.5rem;
+    gap: 1rem;
+    padding-top: 2rem;
+    align-items: normal;
+    position: relative;
+  }
+
+  .companyName{
+    font-size: .8125rem;
+    letter-spacing: 2px;
+  }
+
+  .productName{
+    width: 445px;
+    font-size: 2.75rem;
+    line-height: 48px;
+  }
+
+  .description{
+    width: 445px;
+    line-height: 26px;
+    text-align: start;
+  }
+
+  .prices_div{
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: .6rem;
+  }
+
+  .amount_and_AddCart_div{
+    flex-direction: row;
+  }
+
+  .amount_div{
+    width: 157px;
+  }
+
+  .amount_div button:hover path{
+    fill: #FFAB6A;
+  }
+
+  .addToCartButton{
+    width: 272px;
+  }
+
+  .addToCartButton:hover{
+    background-color: #FFAB6A;
+  }
+
+  .modal{
+    padding-top: 5rem;
   }
 
   .modal .mainImage{
     width: 550px;
     height: 550px;
   }
+
+  .modal .close_button{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: -40px;
+    right: 0;
+    transition: .2s;
+    width: 20px;
+    height: 20px;
+  }
+
+  .modal .close_button:hover path{
+    fill: #FF7E1B;
+  }
+
+  .modal .slides{
+    margin: 2rem;
+  }
+
+  .modal .slide{
+    width: 88px;
+    height: 88px;
+    background-color: #FFFFFF;
+    border-radius: 17px;
+  }
+
+  .modal .slide img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 1;
+    position: relative;
+  }
+
+  .modal .slide img::after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "opass";
+    background-color: #2b2a2a;
+    width: 5px;
+    height: 5px;
+  }
+
+  .modal .slide:hover{
+    border-radius: 16px;
+  }
+
+  .modal .slide:hover img{
+    opacity: .6;
+  }
+
+  .modal .slide.active{
+    border: 3px solid #FF7E1B ;
+    border-radius: 18px;
+
+  }
+
+  .modal .slide.active img{
+    opacity: .3;
+  }
+
+  .modal .previous_button, .modal .next_button{
+    position: absolute;
+    top: 270px;
+    width: 56px;
+    height: 56px;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal button path{
+    transition: .2s;
+  }
+
+  .modal .previous_button:hover path, .next_button:hover path{
+    stroke: #FF7E1B;
+  }
+
+  .modal .previous_button{
+    left: -30px;
+  }
+
+  .modal .next_button{
+    right: -30px;
+  }
+
+  .modal::backdrop{
+    background-color: hsl(0, 0%, 0%, .75);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

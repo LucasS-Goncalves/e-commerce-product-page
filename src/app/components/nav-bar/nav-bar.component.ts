@@ -9,8 +9,8 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class NavBarComponent implements OnInit{
 
-  openedMenu = false;
-  cartOpened = false;
+  menuIsOpened = false;
+  cartIsOpened = false;
 
   cartItems: Cart[] = [];
 
@@ -27,10 +27,6 @@ export class NavBarComponent implements OnInit{
         }
       }
     );
-  }
-
-  openMenu(){
-    this.openedMenu = !this.openedMenu;
   }
 
   deleteItem(ItemIndex: number){

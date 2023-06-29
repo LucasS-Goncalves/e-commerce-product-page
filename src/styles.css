@@ -1,3 +1,14 @@
+:root{
+  --white: hsl(0, 0%, 100%);
+  --black: #1D2026;
+  --orange: hsl(26, 100%, 55%);
+  --cart-shadow: hsl(0, 0%, 0%, 10%);
+  --black-75-opacity: hsl(0, 0%, 0%, .75);
+  --light-gray-for-border-bottom: #E4E9F2;
+  --gray: #69707D;
+
+}
+
 *{
   margin: 0;
   padding: 0;

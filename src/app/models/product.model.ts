@@ -11,5 +11,5 @@ export interface Product{
   newPrice: number,
   discount: number,
   oldPrice: number,
-  productId: number
+  productId: number,
 }
