@@ -22,9 +22,9 @@ button{
 }
 
 .slideshow_container{
-  position: relative;
   width: 100%;
-  height: auto;
+  height: 100%;
+  position: relative;
 }
 
 .mainImage{
@@ -33,7 +33,6 @@ button{
 
 .slides{
   height: 100%;
-  position: relative;
 }
 
 .slide{
@@ -52,18 +51,18 @@ button{
 }
 
 .previous_button, .next_button{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   width: 40px;
   height: 40px;
-  background-color: #FFFFFF;
-  border: none;
-  border-radius: 100%;
-  translate: (50%);
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 50%;
+  background-color: var(--white);
+  border: none;
+  border-radius: 100%;
+  transform: translateY(-50%);
 }
 
 .previous_button{
@@ -74,49 +73,47 @@ button{
   right: 15px;
 }
 
-.fade{
-  animation-name: fade;
-  animation-duration: 1.2s;
-}
-
 .product_container{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1.5rem;
-  padding-bottom: 3rem;
   gap: 1rem;
+  padding: 1.5rem 1.5rem 3rem 1.5rem;
 }
 
 .companyName{
-  color: #FF7E1B;
+  color: var(--orange);
   font-size: .75rem;
+  font-weight: 700;
   letter-spacing: 1.85px;
 }
 
 .productName{
-  color: #1D2026;
+  color: var(--black);
   font-size: 1.75rem;
   font-weight: 700;
   line-height: 32px;
 }
 
 .description{
-  color: #69707D;
+  color: var(--gray);
   font-size: .9375rem;
+  font-weight: 400;
   line-height: 25px;
 }
 
 .prices_div{
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
 
 .newPrice_and_discount_div{
   display: flex;
+  flex-direction: row;
   align-items: center;
-  gap: .8rem;
+  gap: 1.5rem;
 }
 
 .newPrice{
@@ -125,24 +122,26 @@ button{
 }
 
 .discount_div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFEEE2;
   width: 51px;
   height: 27px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bege);
   border-radius: 8px;
 }
 
 .discount{
-  color: #FF7E1B;
+  color: var(--orange);
   font-size: 1rem;
   font-weight: 700;
 }
 
 .oldPrice{
-  color: #B6BCC8;
+  color: var(--gray-for-discount);
   font-size: 1rem;
+  font-weight: 700;
 }
 
 .amount_and_AddCart_div{
@@ -153,23 +152,27 @@ button{
 }
 
 .amount_div{
-  background-color: #F6F8FD;
+  width: 100%;
+  max-width: 327px;
+  max-height: 56px;
   display: flex;
+  flex-grow: 2;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 327px;
-  height: 56px;
+  background-color: var(--light-blue-for-amount-control);
   border-radius: 10px;
 }
 
 .amount_div button{
-  cursor: pointer;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   background-color: transparent;
   border: none;
   padding: 1rem 1.5rem;
+  cursor: pointer;
 }
 
 .amount_div button path{
@@ -182,39 +185,37 @@ button{
 }
 
 .addToCartButton{
-  background-color: #FF7E1B;
-  color: #FFFFFF;
-  font-size: 1rem;
-  font-weight: 700;
+  height: 56px;
+  width: 100%;
+  max-width: 327px;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  width: 327px;
-  height: 56px;
+  background-color: var(--orange);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
   border: none;
   border-radius: 10px;
-  box-shadow: 0px 25px 45px -15px hsl(26, 100%, 55%, .6);
+  box-shadow: 0px 25px 45px -15px var(--add-to-cart-button-shadow);
   transition: .2s;
 }
 
 @media(min-width: 768px){
   .slideshow_container{
-    position: relative;
-    width: 100%;
     height: 550px;
   }
 
   .slide img{
-    width: 100%;
-    height: 100%;
     object-fit:contain;
     object-position: center;
   }
 
   .previous_button, .next_button{
-    border: 2px solid #FF7E1B;
-    transition: .2s;
+    border: 2px solid var(--orange);
+    transition: stroke .2s;
   }
 
   .previous_button{
@@ -226,46 +227,57 @@ button{
   }
 
   .previous_button:hover path, .next_button:hover path{
-    stroke: #FF7E1B;
+    stroke: var(--orange);
   }
 
   .product_container{
+    padding-top: 2.5rem;
     align-items: center;
+    gap: 1.5rem;
   }
 
   .description{
-    color: #69707D;
-    font-size: .9375rem;
-    line-height: 25px;
     width: 500px;
     text-align: center;
   }
+
+  .newPrice_and_discount_div{
+    gap: .8rem;
+  }
+
+  .discount_div{
+    margin-right: 4rem;
+  }
+
+  .addToCartButton, .amount_div{
+    height: 56px;
+    width: 327px;
+  }
+
 }
 
 @media(min-width: 1230px){
 
   main{
-    margin: auto;
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: center;
     gap: 4rem;
     padding-top: 3rem;
-    padding-bottom: 4rem;
-
   }
 
   .slideshow_container{
-    position: static;
     width: 350px;
     height: 565px;
+    position: static;
   }
 
   .mainImage{
-    cursor: pointer;
-    display: block;
     width: 350px;
     height: 350px;
+    display: block;
+    cursor: pointer;
   }
 
   .mainImage img{
@@ -278,36 +290,29 @@ button{
     width: auto;
     height: auto;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     margin-top: 2rem;
-
   }
 
   .slide{
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     display: block;
     cursor: pointer;
   }
 
+  .slide img{
+    border-radius: 15px;
+  }
+
   .slide.active{
-    border: 3px solid #FF7E1B ;
+    border: 3px solid var(--orange);
     border-radius: 17px;
   }
 
   .slide.active img{
-    width: 100%;
-    height: 100%;
-    display: block;
     opacity: .3;
-  }
-
-  .slide img{
-    object-fit: fill;
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-    transition: .2s;
   }
 
   .slide:hover img{
@@ -318,20 +323,10 @@ button{
     display: none;
   }
 
-  .previous_button{
-    left: 15px;
-  }
-
-  .next_button{
-    right: 15px;
-  }
-
   .product_container{
-    padding: 0 1.5rem 0 1.5rem;
     gap: 1rem;
-    padding-top: 2rem;
-    align-items: normal;
-    position: relative;
+    padding: 2rem 1.5rem 0 1.5rem;
+    align-items: flex-start;
   }
 
   .companyName{
@@ -346,8 +341,8 @@ button{
   }
 
   .description{
-    font-size: .85rem;
     width: 445px;
+    font-size: .85rem;
     line-height: 26px;
     text-align: start;
   }
@@ -356,7 +351,7 @@ button{
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    gap: .6rem;
+    gap: .8rem;
   }
 
   .amount_and_AddCart_div{
@@ -368,7 +363,7 @@ button{
   }
 
   .amount_div button:hover path{
-    fill: #FFAB6A;
+    fill: var(--orange-hover);
   }
 
   .addToCartButton{
@@ -376,75 +371,66 @@ button{
   }
 
   .addToCartButton:hover{
-    background-color: #FFAB6A;
+    background-color: var(--add-to-cart-button-hover);
   }
 
   .modal{
-    background-color: transparent;
-    border: none;
     width: auto;
-    height: 100vh;
+    height: auto;
     top: 0;
     left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    padding-top: 5rem;
+    border: none;
     overflow: hidden;
-    translate: -50%;
-    padding-top: 3.5rem;
+  }
+
+  .modal .container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .modal .mainImage{
+    width: 400px;
+    height: 400px;
     position: relative;
     margin: 0 auto;
-    width: 390px;
-    height: 390px;
   }
 
   .modal .close_button{
-    background-color: transparent;
-    border: none;
+    width: 20px;
+    height: 20px;
     position: absolute;
     top: -40px;
     right: 0;
+    background-color: transparent;
+    border: none;
     transition: .2s;
-    width: 20px;
-    height: 20px;
   }
 
   .modal .close_button:hover path{
-    fill: #FF7E1B;
+    fill: var(--orange);
   }
 
   .modal .slides{
     flex-direction: column;
-    margin: 1rem;
-    gap: 2rem;
-    width: auto;
-    height: auto;
     justify-content: center;
+    gap: 1rem;
+    margin: 0;
   }
 
   .modal .slide{
-    width: 88px;
-    height: 88px;
-    background-color: #FFFFFF;
+    width: 75px;
+    height: 75px;
+    background-color: var(--white);
     border-radius: 17px;
   }
 
   .modal .slide img{
-    width: 100%;
-    height: 100%;
-    display: block;
-    opacity: 1;
-    position: relative;
-  }
-
-  .modal .slide img::after{
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "opass";
-    background-color: #2b2a2a;
-    width: 5px;
-    height: 5px;
+    border-radius: 15px;
   }
 
   .modal .slide:hover{
@@ -456,26 +442,21 @@ button{
   }
 
   .modal .slide.active{
-    border: 3px solid #FF7E1B ;
     border-radius: 18px;
-
-  }
-
-  .modal .slide.active img{
-    opacity: .3;
   }
 
   .modal .previous_button, .modal .next_button{
-    position: absolute;
-    top: 270px;
     width: 56px;
     height: 56px;
-    background-color: #FFFFFF;
-    border: none;
-    border-radius: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    top: 200px;
+    background-color: var(--white);
+    border: none;
+    border-radius: 100%;
   }
 
   .modal button path{
@@ -483,7 +464,7 @@ button{
   }
 
   .modal .previous_button:hover path, .next_button:hover path{
-    stroke: #FF7E1B;
+    stroke: var(--orange);
   }
 
   .modal .previous_button{
@@ -502,141 +483,37 @@ button{
 @media(min-width: 1440px){
 
   main{
-    margin: auto;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
     gap: 6rem;
-    padding-top: 3rem;
-    padding-bottom: 4rem;
-
+    padding-top: 6rem;
   }
 
   .slideshow_container{
-    position: static;
     width: 445px;
-    height: 565px;
   }
 
   .mainImage{
-    cursor: pointer;
-    display: block;
     width: 445px;
     height: 445px;
   }
 
-  .mainImage img{
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-  }
-
-  .slides{
-    width: auto;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-
-  }
-
   .slide{
-    width: 75px;
-    height: 75px;
-    display: block;
-    cursor: pointer;
-  }
-
-  .slide.active{
-    border: 3px solid #FF7E1B ;
-    border-radius: 17px;
-  }
-
-  .slide.active img{
-    width: 100%;
-    height: 100%;
-    display: block;
-    opacity: .3;
+    width: 88px;
+    height: 88px;
   }
 
   .slide img{
     object-fit: fill;
-    width: 100%;
-    height: 100%;
     border-radius: 15px;
-    transition: .2s;
-  }
-
-  .slide:hover img{
-    opacity: .5;
-  }
-
-  .previous_button, .next_button{
-    display: none;
-  }
-
-  .previous_button{
-    left: 15px;
-  }
-
-  .next_button{
-    right: 15px;
   }
 
   .product_container{
-    padding: 0 1.5rem 0 1.5rem;
-    gap: 1rem;
-    padding-top: 2rem;
-    align-items: normal;
-    position: relative;
+    padding-top: 4rem;
+    gap: 2rem;
   }
 
-  .companyName{
-    font-size: .8125rem;
-    letter-spacing: 2px;
-  }
-
-  .productName{
-    width: 445px;
-    font-size: 2.75rem;
-    line-height: 48px;
-  }
-
-  .description{
-    width: 445px;
-    line-height: 26px;
-    text-align: start;
-  }
-
-  .prices_div{
+  .modal .container{
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: .6rem;
-  }
-
-  .amount_and_AddCart_div{
-    flex-direction: row;
-  }
-
-  .amount_div{
-    width: 157px;
-  }
-
-  .amount_div button:hover path{
-    fill: #FFAB6A;
-  }
-
-  .addToCartButton{
-    width: 272px;
-  }
-
-  .addToCartButton:hover{
-    background-color: #FFAB6A;
-  }
-
-  .modal{
-    padding-top: 5rem;
+    gap: 2.5rem;
   }
 
   .modal .mainImage{
@@ -644,115 +521,20 @@ button{
     height: 550px;
   }
 
-  .modal .close_button{
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: -40px;
-    right: 0;
-    transition: .2s;
-    width: 20px;
-    height: 20px;
-  }
-
-  .modal .close_button:hover path{
-    fill: #FF7E1B;
-  }
-
   .modal .slides{
-    margin: 2rem;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
   }
 
   .modal .slide{
     width: 88px;
     height: 88px;
-    background-color: #FFFFFF;
-    border-radius: 17px;
-  }
-
-  .modal .slide img{
-    width: 100%;
-    height: 100%;
-    display: block;
-    opacity: 1;
-    position: relative;
-  }
-
-  .modal .slide img::after{
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: "opass";
-    background-color: #2b2a2a;
-    width: 5px;
-    height: 5px;
-  }
-
-  .modal .slide:hover{
-    border-radius: 16px;
-  }
-
-  .modal .slide:hover img{
-    opacity: .6;
-  }
-
-  .modal .slide.active{
-    border: 3px solid #FF7E1B ;
-    border-radius: 18px;
-
-  }
-
-  .modal .slide.active img{
-    opacity: .3;
   }
 
   .modal .previous_button, .modal .next_button{
-    position: absolute;
     top: 270px;
-    width: 56px;
-    height: 56px;
-    background-color: #FFFFFF;
-    border: none;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
-
-  .modal button path{
-    transition: .2s;
-  }
-
-  .modal .previous_button:hover path, .next_button:hover path{
-    stroke: #FF7E1B;
-  }
-
-  .modal .previous_button{
-    left: -30px;
-  }
-
-  .modal .next_button{
-    right: -30px;
-  }
-
-  .modal::backdrop{
-    background-color: hsl(0, 0%, 0%, .75);
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

@@ -300,7 +300,7 @@ header{
     content: "";
     position: absolute;
     left: 0;
-    bottom: -47px;
+    bottom: -34px;
     pointer-events: none;
     transition: .2s;
   }
@@ -335,6 +335,10 @@ header{
 @media(min-width: 1440px){
   .nav{
     padding: 2rem 0;
+  }
+
+  .menu_list li a::after{
+    bottom: -49px;
   }
 }
 

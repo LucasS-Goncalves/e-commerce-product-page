@@ -23,8 +23,9 @@ export class ProductComponent implements OnInit{
     discount: 0,
     oldPrice: 0,
     productId:0,
-  }
-  amount = 1;
+  };
+
+  amount = 0;
 
   @ViewChild('slidesUl') slidesUl!:ElementRef<HTMLUListElement>
   @ViewChild('mainImage') mainImage!:ElementRef<HTMLImageElement>;
@@ -41,7 +42,6 @@ export class ProductComponent implements OnInit{
   ngOnInit(): void {
     this.product = this.productService.product;
     this.innerWidth = window.innerWidth;
-    if(this.innerWidth < 1230){}
   }
 
   onAddItem(img1: string, productName: string, newPrice: number, amount: number, productId: number){
@@ -49,12 +49,11 @@ export class ProductComponent implements OnInit{
   }
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any){
+  onResize(){
     this.innerWidth = window.innerWidth;
     if(this.innerWidth < 1230 && this.openedModal === true){
       this.closeZoom();
     }
-
   }
 
   @HostListener('window:keyup', ['$event'])
@@ -65,18 +64,17 @@ export class ProductComponent implements OnInit{
   }
 
   previousImg(){
-
     if(this.openedModal){
       const slidesInSlidesUlInModal = Array.from(this.slidesUlInModal.nativeElement.children);
-      const activeSlide = this.slidesUlInModal.nativeElement.querySelector('.active');
+      const activeSlideInModal = this.slidesUlInModal.nativeElement.querySelector('.active');
 
-      this.indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlide!);
+      this.indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlideInModal!);
       this.indexOfActiveSlide--;
 
       if(this.indexOfActiveSlide < 0) this.indexOfActiveSlide = (slidesInSlidesUlInModal.length - 1);
 
       this.modalMainImage.nativeElement.src = this.product.images[this.indexOfActiveSlide];
-      activeSlide?.classList.remove('active');
+      activeSlideInModal?.classList.remove('active');
       slidesInSlidesUlInModal[this.indexOfActiveSlide].classList.add('active');
 
     } else {
@@ -94,18 +92,17 @@ export class ProductComponent implements OnInit{
   }
 
   nextImg(){
-
     if(this.openedModal){
       const slidesInSlidesUlInModal = Array.from(this.slidesUlInModal.nativeElement.children);
-      const activeSlide = this.slidesUlInModal.nativeElement.querySelector('.active');
+      const activeSlideInModal = this.slidesUlInModal.nativeElement.querySelector('.active');
 
-      this.indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlide!);
+      this.indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlideInModal!);
       this.indexOfActiveSlide++;
 
       if(this.indexOfActiveSlide >= slidesInSlidesUlInModal.length) this.indexOfActiveSlide = 0;
 
       this.modalMainImage.nativeElement.src = this.product.images[this.indexOfActiveSlide];
-      activeSlide?.classList.remove('active');
+      activeSlideInModal?.classList.remove('active');
       slidesInSlidesUlInModal[this.indexOfActiveSlide].classList.add('active');
 
     } else {
@@ -123,13 +120,12 @@ export class ProductComponent implements OnInit{
   }
 
   changeMainImg(index: number){
-
     if(this.openedModal){
       this.modalMainImage.nativeElement.src = this.product.images[index];
 
       const slidesInSlidesUlInModal = Array.from(this.slidesUlInModal.nativeElement!.children);
-      const activeSlide = this.slidesUlInModal.nativeElement?.querySelector('.active');
-      let indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlide!);
+      const activeSlideInModal = this.slidesUlInModal.nativeElement?.querySelector('.active');
+      let indexOfActiveSlide = slidesInSlidesUlInModal.indexOf(activeSlideInModal!);
       slidesInSlidesUlInModal[indexOfActiveSlide].classList.remove('active');
       slidesInSlidesUlInModal[index].classList.add('active');
 
@@ -146,13 +142,12 @@ export class ProductComponent implements OnInit{
   }
 
   imgZoom(event?: Event){
-    console.log('s')
     this.openedModal = true;
     this.modal.nativeElement.showModal();
     const selectedImg = event?.target as HTMLImageElement;
     this.modalMainImage.nativeElement.src = selectedImg.src;
 
-    const activeSlide = this.slidesUlInModal.nativeElement.querySelector('.active');
+    const activeSlideInModal = this.slidesUlInModal.nativeElement.querySelector('.active');
     const slidesInSlidesUl = Array.from(this.slidesUl.nativeElement.children);
     const slidesInSlidesUlInModal = Array.from(this.slidesUlInModal.nativeElement!.children);
     const slidesImages: any[] = [];
@@ -168,7 +163,7 @@ export class ProductComponent implements OnInit{
         return;
       }
     })
-    activeSlide?.classList.remove('active');
+    activeSlideInModal?.classList.remove('active');
     slidesInSlidesUlInModal[matchedImageIndex].classList.add('active');
   }
 

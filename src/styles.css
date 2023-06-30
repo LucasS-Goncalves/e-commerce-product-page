@@ -2,11 +2,16 @@
   --white: hsl(0, 0%, 100%);
   --black: #1D2026;
   --orange: hsl(26, 100%, 55%);
+  --orange-hover: #FFAB6A;
   --cart-shadow: hsl(0, 0%, 0%, 10%);
   --black-75-opacity: hsl(0, 0%, 0%, .75);
   --light-gray-for-border-bottom: #E4E9F2;
   --gray: #69707D;
-
+  --gray-for-discount: #B6BCC8;
+  --light-blue-for-amount-control: #F6F8FD;
+  --bege: #FFEEE2;
+  --add-to-cart-button-shadow: hsl(26, 100%, 55%, .6);
+  --add-to-cart-button-hover: #FFAB6A;
 }
 
 *{
